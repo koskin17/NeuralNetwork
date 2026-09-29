@@ -1,6 +1,9 @@
 # Local history
 .history/
 
+#Data of Network
+data/
+
 # Byte-compiled / optimized files
 __pycache__/
 *.py[cod]
