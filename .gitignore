@@ -32,3 +32,5 @@ htmlcov/
 # IDE and editor settings
 .idea/
 .vscode/
+!.vscode/
+!.vscode/settings.json
