@@ -21,9 +21,9 @@ test_loader = DataLoader(test_data, batch_size = 64, shuffle = False)
 class SimpleNN(nn.Module):
     def __init__(self):
         super().__init__()
-        self.fc1 = nn.Linear(28*28, 512)    #784 to 128. Это первый слой. 784 входа, 128 выходов. 784 - это 28х28 пикселей, 128 - это скрытый слой (мы можем менять это число)
-        self.fc2 = nn.Linear(512, 256)       #128 to 10
-        self.fc3 = nn.Linear(256, 10)
+        self.fc1 = nn.Linear(28*28, 256)    #784 to 256. Это первый слой. 784 входа, 128 выходов. 784 - это 28х28 пикселей, 256 - это скрытый слой (мы можем менять это число)
+        self.fc2 = nn.Linear(256, 128)      #256 to 128
+        self.fc3 = nn.Linear(128, 10)       #128 to 10
         
     def forward(self, x):
         x = x.view(-1, 28*28)   #Convert image to vector. Это второй слой. 128 входов, 10 выходов. 10 - это цифры от 0 до 9.
@@ -39,7 +39,7 @@ criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr = 0.001)
 
 #Training the model
-for epoch in range(5):
+for epoch in range(10):
     for images, labels in train_loader:
         optimizer.zero_grad()   #Обнуление старых гралиентов, чтобы не смешивать их.
         output = model(images)  #Это прямой подход - нейросеть выдаёт предсказание.
